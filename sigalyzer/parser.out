@@ -1,0 +1,475 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> expr
+Rule 1     expr -> paren
+Rule 2     expr -> and
+Rule 3     expr -> or
+Rule 4     expr -> matchexact
+Rule 5     expr -> matchmore
+Rule 6     expr -> matchless
+Rule 7     expr -> subsig
+Rule 8     subgroup -> subsig
+Rule 9     subgroup -> paren
+Rule 10    subsig -> NUMBER
+Rule 11    paren -> LPAREN expr RPAREN
+Rule 12    and -> expr AND expr
+Rule 13    or -> expr OR expr
+Rule 14    matchexact -> subgroup EQUAL NUMBER
+Rule 15    matchexact -> subgroup EQUAL NUMBER COMMA NUMBER
+Rule 16    matchmore -> subgroup GREATER NUMBER
+Rule 17    matchmore -> subgroup GREATER NUMBER COMMA NUMBER
+Rule 18    matchless -> subgroup LESS NUMBER
+Rule 19    matchless -> subgroup LESS NUMBER COMMA NUMBER
+
+Terminals, with rules where they appear
+
+AND                  : 12
+COMMA                : 15 17 19
+EQUAL                : 14 15
+GREATER              : 16 17
+LESS                 : 18 19
+LPAREN               : 11
+NUMBER               : 10 14 15 15 16 17 17 18 19 19
+OR                   : 13
+RPAREN               : 11
+error                : 
+
+Nonterminals, with rules where they appear
+
+and                  : 2
+expr                 : 11 12 12 13 13 0
+matchexact           : 4
+matchless            : 6
+matchmore            : 5
+or                   : 3
+paren                : 1 9
+subgroup             : 14 15 16 17 18 19
+subsig               : 7 8
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expr
+    (1) expr -> . paren
+    (2) expr -> . and
+    (3) expr -> . or
+    (4) expr -> . matchexact
+    (5) expr -> . matchmore
+    (6) expr -> . matchless
+    (7) expr -> . subsig
+    (11) paren -> . LPAREN expr RPAREN
+    (12) and -> . expr AND expr
+    (13) or -> . expr OR expr
+    (14) matchexact -> . subgroup EQUAL NUMBER
+    (15) matchexact -> . subgroup EQUAL NUMBER COMMA NUMBER
+    (16) matchmore -> . subgroup GREATER NUMBER
+    (17) matchmore -> . subgroup GREATER NUMBER COMMA NUMBER
+    (18) matchless -> . subgroup LESS NUMBER
+    (19) matchless -> . subgroup LESS NUMBER COMMA NUMBER
+    (10) subsig -> . NUMBER
+    (8) subgroup -> . subsig
+    (9) subgroup -> . paren
+
+    LPAREN          shift and go to state 9
+    NUMBER          shift and go to state 11
+
+    expr                           shift and go to state 1
+    paren                          shift and go to state 2
+    and                            shift and go to state 3
+    or                             shift and go to state 4
+    matchexact                     shift and go to state 5
+    matchmore                      shift and go to state 6
+    matchless                      shift and go to state 7
+    subsig                         shift and go to state 8
+    subgroup                       shift and go to state 10
+
+state 1
+
+    (0) S' -> expr .
+    (12) and -> expr . AND expr
+    (13) or -> expr . OR expr
+
+    AND             shift and go to state 12
+    OR              shift and go to state 13
+
+
+state 2
+
+    (1) expr -> paren .
+    (9) subgroup -> paren .
+
+    AND             reduce using rule 1 (expr -> paren .)
+    OR              reduce using rule 1 (expr -> paren .)
+    $end            reduce using rule 1 (expr -> paren .)
+    RPAREN          reduce using rule 1 (expr -> paren .)
+    EQUAL           reduce using rule 9 (subgroup -> paren .)
+    GREATER         reduce using rule 9 (subgroup -> paren .)
+    LESS            reduce using rule 9 (subgroup -> paren .)
+
+
+state 3
+
+    (2) expr -> and .
+
+    AND             reduce using rule 2 (expr -> and .)
+    OR              reduce using rule 2 (expr -> and .)
+    $end            reduce using rule 2 (expr -> and .)
+    RPAREN          reduce using rule 2 (expr -> and .)
+
+
+state 4
+
+    (3) expr -> or .
+
+    AND             reduce using rule 3 (expr -> or .)
+    OR              reduce using rule 3 (expr -> or .)
+    $end            reduce using rule 3 (expr -> or .)
+    RPAREN          reduce using rule 3 (expr -> or .)
+
+
+state 5
+
+    (4) expr -> matchexact .
+
+    AND             reduce using rule 4 (expr -> matchexact .)
+    OR              reduce using rule 4 (expr -> matchexact .)
+    $end            reduce using rule 4 (expr -> matchexact .)
+    RPAREN          reduce using rule 4 (expr -> matchexact .)
+
+
+state 6
+
+    (5) expr -> matchmore .
+
+    AND             reduce using rule 5 (expr -> matchmore .)
+    OR              reduce using rule 5 (expr -> matchmore .)
+    $end            reduce using rule 5 (expr -> matchmore .)
+    RPAREN          reduce using rule 5 (expr -> matchmore .)
+
+
+state 7
+
+    (6) expr -> matchless .
+
+    AND             reduce using rule 6 (expr -> matchless .)
+    OR              reduce using rule 6 (expr -> matchless .)
+    $end            reduce using rule 6 (expr -> matchless .)
+    RPAREN          reduce using rule 6 (expr -> matchless .)
+
+
+state 8
+
+    (7) expr -> subsig .
+    (8) subgroup -> subsig .
+
+    AND             reduce using rule 7 (expr -> subsig .)
+    OR              reduce using rule 7 (expr -> subsig .)
+    $end            reduce using rule 7 (expr -> subsig .)
+    RPAREN          reduce using rule 7 (expr -> subsig .)
+    EQUAL           reduce using rule 8 (subgroup -> subsig .)
+    GREATER         reduce using rule 8 (subgroup -> subsig .)
+    LESS            reduce using rule 8 (subgroup -> subsig .)
+
+
+state 9
+
+    (11) paren -> LPAREN . expr RPAREN
+    (1) expr -> . paren
+    (2) expr -> . and
+    (3) expr -> . or
+    (4) expr -> . matchexact
+    (5) expr -> . matchmore
+    (6) expr -> . matchless
+    (7) expr -> . subsig
+    (11) paren -> . LPAREN expr RPAREN
+    (12) and -> . expr AND expr
+    (13) or -> . expr OR expr
+    (14) matchexact -> . subgroup EQUAL NUMBER
+    (15) matchexact -> . subgroup EQUAL NUMBER COMMA NUMBER
+    (16) matchmore -> . subgroup GREATER NUMBER
+    (17) matchmore -> . subgroup GREATER NUMBER COMMA NUMBER
+    (18) matchless -> . subgroup LESS NUMBER
+    (19) matchless -> . subgroup LESS NUMBER COMMA NUMBER
+    (10) subsig -> . NUMBER
+    (8) subgroup -> . subsig
+    (9) subgroup -> . paren
+
+    LPAREN          shift and go to state 9
+    NUMBER          shift and go to state 11
+
+    expr                           shift and go to state 14
+    paren                          shift and go to state 2
+    and                            shift and go to state 3
+    or                             shift and go to state 4
+    matchexact                     shift and go to state 5
+    matchmore                      shift and go to state 6
+    matchless                      shift and go to state 7
+    subsig                         shift and go to state 8
+    subgroup                       shift and go to state 10
+
+state 10
+
+    (14) matchexact -> subgroup . EQUAL NUMBER
+    (15) matchexact -> subgroup . EQUAL NUMBER COMMA NUMBER
+    (16) matchmore -> subgroup . GREATER NUMBER
+    (17) matchmore -> subgroup . GREATER NUMBER COMMA NUMBER
+    (18) matchless -> subgroup . LESS NUMBER
+    (19) matchless -> subgroup . LESS NUMBER COMMA NUMBER
+
+    EQUAL           shift and go to state 15
+    GREATER         shift and go to state 16
+    LESS            shift and go to state 17
+
+
+state 11
+
+    (10) subsig -> NUMBER .
+
+    AND             reduce using rule 10 (subsig -> NUMBER .)
+    OR              reduce using rule 10 (subsig -> NUMBER .)
+    $end            reduce using rule 10 (subsig -> NUMBER .)
+    EQUAL           reduce using rule 10 (subsig -> NUMBER .)
+    GREATER         reduce using rule 10 (subsig -> NUMBER .)
+    LESS            reduce using rule 10 (subsig -> NUMBER .)
+    RPAREN          reduce using rule 10 (subsig -> NUMBER .)
+
+
+state 12
+
+    (12) and -> expr AND . expr
+    (1) expr -> . paren
+    (2) expr -> . and
+    (3) expr -> . or
+    (4) expr -> . matchexact
+    (5) expr -> . matchmore
+    (6) expr -> . matchless
+    (7) expr -> . subsig
+    (11) paren -> . LPAREN expr RPAREN
+    (12) and -> . expr AND expr
+    (13) or -> . expr OR expr
+    (14) matchexact -> . subgroup EQUAL NUMBER
+    (15) matchexact -> . subgroup EQUAL NUMBER COMMA NUMBER
+    (16) matchmore -> . subgroup GREATER NUMBER
+    (17) matchmore -> . subgroup GREATER NUMBER COMMA NUMBER
+    (18) matchless -> . subgroup LESS NUMBER
+    (19) matchless -> . subgroup LESS NUMBER COMMA NUMBER
+    (10) subsig -> . NUMBER
+    (8) subgroup -> . subsig
+    (9) subgroup -> . paren
+
+    LPAREN          shift and go to state 9
+    NUMBER          shift and go to state 11
+
+    expr                           shift and go to state 18
+    paren                          shift and go to state 2
+    and                            shift and go to state 3
+    or                             shift and go to state 4
+    matchexact                     shift and go to state 5
+    matchmore                      shift and go to state 6
+    matchless                      shift and go to state 7
+    subsig                         shift and go to state 8
+    subgroup                       shift and go to state 10
+
+state 13
+
+    (13) or -> expr OR . expr
+    (1) expr -> . paren
+    (2) expr -> . and
+    (3) expr -> . or
+    (4) expr -> . matchexact
+    (5) expr -> . matchmore
+    (6) expr -> . matchless
+    (7) expr -> . subsig
+    (11) paren -> . LPAREN expr RPAREN
+    (12) and -> . expr AND expr
+    (13) or -> . expr OR expr
+    (14) matchexact -> . subgroup EQUAL NUMBER
+    (15) matchexact -> . subgroup EQUAL NUMBER COMMA NUMBER
+    (16) matchmore -> . subgroup GREATER NUMBER
+    (17) matchmore -> . subgroup GREATER NUMBER COMMA NUMBER
+    (18) matchless -> . subgroup LESS NUMBER
+    (19) matchless -> . subgroup LESS NUMBER COMMA NUMBER
+    (10) subsig -> . NUMBER
+    (8) subgroup -> . subsig
+    (9) subgroup -> . paren
+
+    LPAREN          shift and go to state 9
+    NUMBER          shift and go to state 11
+
+    expr                           shift and go to state 19
+    paren                          shift and go to state 2
+    and                            shift and go to state 3
+    or                             shift and go to state 4
+    matchexact                     shift and go to state 5
+    matchmore                      shift and go to state 6
+    matchless                      shift and go to state 7
+    subsig                         shift and go to state 8
+    subgroup                       shift and go to state 10
+
+state 14
+
+    (11) paren -> LPAREN expr . RPAREN
+    (12) and -> expr . AND expr
+    (13) or -> expr . OR expr
+
+    RPAREN          shift and go to state 20
+    AND             shift and go to state 12
+    OR              shift and go to state 13
+
+
+state 15
+
+    (14) matchexact -> subgroup EQUAL . NUMBER
+    (15) matchexact -> subgroup EQUAL . NUMBER COMMA NUMBER
+
+    NUMBER          shift and go to state 21
+
+
+state 16
+
+    (16) matchmore -> subgroup GREATER . NUMBER
+    (17) matchmore -> subgroup GREATER . NUMBER COMMA NUMBER
+
+    NUMBER          shift and go to state 22
+
+
+state 17
+
+    (18) matchless -> subgroup LESS . NUMBER
+    (19) matchless -> subgroup LESS . NUMBER COMMA NUMBER
+
+    NUMBER          shift and go to state 23
+
+
+state 18
+
+    (12) and -> expr AND expr .
+    (12) and -> expr . AND expr
+    (13) or -> expr . OR expr
+
+    AND             reduce using rule 12 (and -> expr AND expr .)
+    OR              reduce using rule 12 (and -> expr AND expr .)
+    $end            reduce using rule 12 (and -> expr AND expr .)
+    RPAREN          reduce using rule 12 (and -> expr AND expr .)
+
+  ! AND             [ shift and go to state 12 ]
+  ! OR              [ shift and go to state 13 ]
+
+
+state 19
+
+    (13) or -> expr OR expr .
+    (12) and -> expr . AND expr
+    (13) or -> expr . OR expr
+
+    OR              reduce using rule 13 (or -> expr OR expr .)
+    $end            reduce using rule 13 (or -> expr OR expr .)
+    RPAREN          reduce using rule 13 (or -> expr OR expr .)
+    AND             shift and go to state 12
+
+  ! AND             [ reduce using rule 13 (or -> expr OR expr .) ]
+  ! OR              [ shift and go to state 13 ]
+
+
+state 20
+
+    (11) paren -> LPAREN expr RPAREN .
+
+    AND             reduce using rule 11 (paren -> LPAREN expr RPAREN .)
+    OR              reduce using rule 11 (paren -> LPAREN expr RPAREN .)
+    $end            reduce using rule 11 (paren -> LPAREN expr RPAREN .)
+    EQUAL           reduce using rule 11 (paren -> LPAREN expr RPAREN .)
+    GREATER         reduce using rule 11 (paren -> LPAREN expr RPAREN .)
+    LESS            reduce using rule 11 (paren -> LPAREN expr RPAREN .)
+    RPAREN          reduce using rule 11 (paren -> LPAREN expr RPAREN .)
+
+
+state 21
+
+    (14) matchexact -> subgroup EQUAL NUMBER .
+    (15) matchexact -> subgroup EQUAL NUMBER . COMMA NUMBER
+
+    AND             reduce using rule 14 (matchexact -> subgroup EQUAL NUMBER .)
+    OR              reduce using rule 14 (matchexact -> subgroup EQUAL NUMBER .)
+    $end            reduce using rule 14 (matchexact -> subgroup EQUAL NUMBER .)
+    RPAREN          reduce using rule 14 (matchexact -> subgroup EQUAL NUMBER .)
+    COMMA           shift and go to state 24
+
+
+state 22
+
+    (16) matchmore -> subgroup GREATER NUMBER .
+    (17) matchmore -> subgroup GREATER NUMBER . COMMA NUMBER
+
+    AND             reduce using rule 16 (matchmore -> subgroup GREATER NUMBER .)
+    OR              reduce using rule 16 (matchmore -> subgroup GREATER NUMBER .)
+    $end            reduce using rule 16 (matchmore -> subgroup GREATER NUMBER .)
+    RPAREN          reduce using rule 16 (matchmore -> subgroup GREATER NUMBER .)
+    COMMA           shift and go to state 25
+
+
+state 23
+
+    (18) matchless -> subgroup LESS NUMBER .
+    (19) matchless -> subgroup LESS NUMBER . COMMA NUMBER
+
+    AND             reduce using rule 18 (matchless -> subgroup LESS NUMBER .)
+    OR              reduce using rule 18 (matchless -> subgroup LESS NUMBER .)
+    $end            reduce using rule 18 (matchless -> subgroup LESS NUMBER .)
+    RPAREN          reduce using rule 18 (matchless -> subgroup LESS NUMBER .)
+    COMMA           shift and go to state 26
+
+
+state 24
+
+    (15) matchexact -> subgroup EQUAL NUMBER COMMA . NUMBER
+
+    NUMBER          shift and go to state 27
+
+
+state 25
+
+    (17) matchmore -> subgroup GREATER NUMBER COMMA . NUMBER
+
+    NUMBER          shift and go to state 28
+
+
+state 26
+
+    (19) matchless -> subgroup LESS NUMBER COMMA . NUMBER
+
+    NUMBER          shift and go to state 29
+
+
+state 27
+
+    (15) matchexact -> subgroup EQUAL NUMBER COMMA NUMBER .
+
+    AND             reduce using rule 15 (matchexact -> subgroup EQUAL NUMBER COMMA NUMBER .)
+    OR              reduce using rule 15 (matchexact -> subgroup EQUAL NUMBER COMMA NUMBER .)
+    $end            reduce using rule 15 (matchexact -> subgroup EQUAL NUMBER COMMA NUMBER .)
+    RPAREN          reduce using rule 15 (matchexact -> subgroup EQUAL NUMBER COMMA NUMBER .)
+
+
+state 28
+
+    (17) matchmore -> subgroup GREATER NUMBER COMMA NUMBER .
+
+    AND             reduce using rule 17 (matchmore -> subgroup GREATER NUMBER COMMA NUMBER .)
+    OR              reduce using rule 17 (matchmore -> subgroup GREATER NUMBER COMMA NUMBER .)
+    $end            reduce using rule 17 (matchmore -> subgroup GREATER NUMBER COMMA NUMBER .)
+    RPAREN          reduce using rule 17 (matchmore -> subgroup GREATER NUMBER COMMA NUMBER .)
+
+
+state 29
+
+    (19) matchless -> subgroup LESS NUMBER COMMA NUMBER .
+
+    AND             reduce using rule 19 (matchless -> subgroup LESS NUMBER COMMA NUMBER .)
+    OR              reduce using rule 19 (matchless -> subgroup LESS NUMBER COMMA NUMBER .)
+    $end            reduce using rule 19 (matchless -> subgroup LESS NUMBER COMMA NUMBER .)
+    RPAREN          reduce using rule 19 (matchless -> subgroup LESS NUMBER COMMA NUMBER .)
+
